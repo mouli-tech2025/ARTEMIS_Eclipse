@@ -1,0 +1,243 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+
+    --background: 255 255 255;
+    --foreground: 20 20 20;
+
+    --card: 244 244 244;
+    --card-foreground: 50 50 50;
+
+    --primary: 97 66 255;
+    --primary-foreground: 255 255 255;
+
+    --secondary: 244 244 244;
+    --secondary-foreground: 50 50 50;
+
+    --muted: 190 190 190;
+    --muted-foreground: 110 110 110;
+
+    --accent: 97 66 255;
+    --accent-foreground: 255 255 255;
+
+    --border: 230 230 230;
+    --input: 50 50 50;
+
+    --radius: 1.5rem;
+
+    --revio-obsidian: 20 20 20;
+    --revio-charcoal: 20 20 20;
+    --revio-violet: 97 66 255;
+    --revio-violet-glow: 97 66 255;
+    --revio-emerald: 100 100 100;
+    --revio-light: 244 244 244;
+    --revio-white: 255 255 255;
+    --revio-light-orchid: 216 160 223;
+    --revio-light-pink: 246 226 248;
+    --revio-light-green: 204 255 240;
+
+    /* Gradients */
+    --gradient-violet: linear-gradient(135deg, rgba(97, 66, 255, 1), rgba(139, 102, 255, 1));
+    --gradient-dark: linear-gradient(180deg, hsl(0 0% 4%), hsl(0 0% 8%));
+    --gradient-glass: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.05));
+
+    /* Shadows */
+    --shadow-violet-glow: 0 0 60px rgba(97, 66, 255, 0.3);
+    --shadow-card: 0 4px 24px rgba(20, 20, 20, 0.08);
+    --shadow-elevated: 0 20px 60px rgba(20, 20, 20, 0.15);
+
+    /* Spacing */
+    --spacing-base: 16px;
+    --spacing-lg: 24px;
+    --spacing-xl: 40px;
+    --spacing-2xl: 60px;
+    --spacing-3xl: 80px;
+    --spacing-4xl: 120px;
+
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply text-foreground bg-white text-base leading-[1.4] antialiased;
+    font-family: 'Inter Tight', system-ui, sans-serif;
+  }
+
+  /* Typography */
+  .h1 {
+    @apply text-[36px] md:text-[54px] lg:text-[68px] font-semibold leading-[1.2] tracking-tight;
+  }
+
+  .h2 {
+    @apply text-[32px] md:text-[48px] lg:text-[60px] font-semibold leading-[1.2] tracking-tight;
+  }
+
+  .h3 {
+    @apply text-[32px] sm:text-[36px] md:text-[40px] lg:text-[44px] font-semibold leading-[1.2] tracking-tight;
+  }
+
+  .h4 {
+    @apply text-[28px] sm:text-[30px] md:text-[32px] lg:text-[36px] font-semibold leading-[1.3] tracking-tight;
+  }
+
+  .h5 {
+    @apply text-[20px] sm:text-[22px] md:text-[23px] lg:text-[24px] font-medium leading-[1.4] tracking-tight;
+  }
+
+  .h6 {
+    @apply text-lg sm:text-[20px] md:text-[21px] lg:text-[22px] font-medium leading-[1.4] tracking-tight;
+  }
+
+  .paragraph-regular {
+    @apply text-base leading-[1.4];
+  }
+
+  .paragraph-large {
+    @apply text-lg leading-[1.4];
+  }
+
+  .paragraph-small {
+    @apply text-sm leading-[1.4];
+  }
+
+  /* Paddings */
+  .banner-top-padding {
+    @apply pt-[120px] md:pt-[140px] lg:pt-[160px] xl:pt-[209px];
+  }
+
+  .banner-bottom-padding {
+    @apply pb-[120px] md:pb-[140px] lg:pb-[160px] xl:pb-[180px];
+  }
+}
+
+@layer components {
+  .glass-card {
+    @apply bg-white/10 backdrop-blur-xl border border-white/20 rounded-3xl;
+  }
+
+  .glass-card-light {
+    @apply bg-white/80 backdrop-blur-xl border border-white/40 rounded-3xl shadow-lg;
+  }
+
+  .text-gradient {
+    @apply bg-clip-text text-transparent;
+    background-image: var(--gradient-violet);
+  }
+
+  .testimonial-video-gradient {
+    background: linear-gradient(180deg, rgba(97, 66, 255, 0) 35%, rgba(97, 66, 255, 0.7) 100%);
+  }
+
+  .glow-violet {
+    box-shadow: var(--shadow-violet-glow);
+  }
+
+  .hover-lift {
+    @apply transition-all duration-300 ease-out;
+  }
+
+  .hover-lift:hover {
+    @apply -translate-y-1;
+    box-shadow: 0 20px 40px hsl(0 0% 0% / 0.1);
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-float-delayed {
+    animation: float 6s ease-in-out infinite 2s;
+  }
+
+  .animate-float-slow {
+    animation: float 8s ease-in-out infinite 1s;
+  }
+
+  @keyframes float {
+
+    0%,
+    100% {
+      transform: translateY(0px);
+    }
+
+    50% {
+      transform: translateY(-20px);
+    }
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 3s ease-in-out infinite;
+  }
+
+  @keyframes pulse-glow {
+
+    0%,
+    100% {
+      box-shadow: 0 0 20px hsl(239 84% 67% / 0.3);
+    }
+
+    50% {
+      box-shadow: 0 0 40px hsl(239 84% 67% / 0.5);
+    }
+  }
+}
+
+/* TipTap Editor Styles */
+.ProseMirror {
+  @apply text-white;
+}
+
+.ProseMirror p.is-editor-empty:first-child::before {
+  @apply pointer-events-none float-left h-0 text-muted-foreground;
+  content: attr(data-placeholder);
+}
+
+.ProseMirror h1 {
+  @apply text-3xl font-bold text-white mb-4;
+}
+
+.ProseMirror h2 {
+  @apply text-2xl font-bold text-white mb-3;
+}
+
+.ProseMirror h3 {
+  @apply text-xl font-bold text-white mb-2;
+}
+
+.ProseMirror p {
+  @apply text-white mb-4;
+}
+
+.ProseMirror ul,
+.ProseMirror ol {
+  @apply pl-6 mb-4 text-white;
+}
+
+.ProseMirror li {
+  @apply text-white;
+}
+
+.ProseMirror blockquote {
+  @apply border-l-4 border-primary pl-4 my-4 italic text-white/80;
+}
+
+.ProseMirror code {
+  @apply bg-white/10 px-1.5 py-0.5 rounded text-sm text-white;
+}
+
+.ProseMirror pre {
+  @apply bg-black/50 p-4 rounded-lg overflow-x-auto my-4;
+}
+
+.ProseMirror pre code {
+  @apply bg-transparent p-0;
+}
